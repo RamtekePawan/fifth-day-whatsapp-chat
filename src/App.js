@@ -4,24 +4,16 @@ function App() {
     <>
       <div className="bg-primary text-center row justify-content-center">
         <h1 className="bg-secondary  col-6  ">Hello WhatsAPP</h1>
-        <h1 className="text-light">PROPOS</h1>
+        <h1 className="text-light">PROPS</h1>
       </div>
       <div className="m-4">
-        <MessageApp />
-        
-        <MessageApp name="Pawan" message="How are You?" desc="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis, doloribus obcaecati non nobis autem amet asperiores iste. Velit, consequatur." />
-
-        <MessageApp name='Pankaj' message="fine Bro!!" desc="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis, doloribus obcaecati non nobis autem amet asperiores iste. Velit, consequatur." />
-
-        <MessageApp name="Pradip " message="Chill Bro" desc="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis, doloribus obcaecati non nobis autem amet asperiores iste. Velit, consequatur." />
-
-        <MessageApp name="Nitesh " message="Nothing" desc="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis, doloribus obcaecati non nobis autem amet asperiores iste. Velit, consequatur." />
+        <ListDemo />
       </div>
     </>
 
   )
 }
-
+/*
 function MessageApp1(props) {
   return (
     <>
@@ -46,6 +38,29 @@ function MessageApp({desc,name,message}) {
     </>
   );
 }
+*/
+function ListDemo() {
+  let data = "Hello World";
+  let list = [];
+  for (let index = 0; index < 10; index++) {
+    list.push(data);
+  }
+
+  return (
+    <>
+      <div className="alert alert-danger">
+        <h3>
+          {data}
+        </h3>
+        <h4>{list.map((item) =>
+        (<h5>{item}</h5>
+        ))}</h4>
+        <p></p>
+      </div>
+    </>
+  );
+}
+
 
 
 
