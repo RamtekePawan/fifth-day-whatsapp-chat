@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function App() {
   return (
@@ -60,9 +60,9 @@ function ListDemo() {
       </div>
     </>
   );
-}*/
 
-function ListDemo() {
+
+function ListDemo() {    // Using DOM Operation
   let [list, setList] = useState(["Pune"]);
 
   let addItem = ()=>{
@@ -87,9 +87,51 @@ function ListDemo() {
       </div>
     </>
   );
+}*/
+
+function ListDemo() {  //using react hooks ===> useRef() 
+
+  let [list, setList] = useState(["Pune"]);
+  let inputRef = useRef();
+
+  let addItem = () => {
+    let newMsg = inputRef.current.value;
+    let newList = [ newMsg,...list];
+    setList(newList);
+
+    inputRef.current.value = "";
+
+  };
+
+  return (
+    <>
+      <div className="alert alert-primary">
+        <input type="text" className="form-control mb-2 p-2" ref={inputRef} placeholder="Message..." />
+
+        <button type="button" className="btn btn-dark mb-2 p-1 px-4" id="id1" onClick={addItem} >ADD-Message</button>
+
+        <h2></h2>
+        <h4>
+          {list.map((item) => (
+            <><h5><MessageApp message={item} /></h5>
+            </>
+          ))}
+        </h4>
+      </div>
+    </>
+  );
 }
 
-
-
+function MessageApp({ message }) {
+  return (
+    <>
+      <div className="alert alert-danger"><h2>
+        Hi {message}
+      </h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, similique quod porro repudiandae quam ab quis. Reiciendis nulla odit ea, maiores quisquam voluptatem distinctio quod at laboriosam culpa reprehenderit aut explicabo veniam ad eum, aspernatur sint? Corporis omnis veritatis soluta quo iste tempora, laborum beatae eveniet impedit hic unde laboriosam.</p>
+      </div>
+    </>
+  );
+}
 
 export default App;
