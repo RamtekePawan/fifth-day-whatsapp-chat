@@ -1,10 +1,11 @@
+import { useState } from "react";
 
 function App() {
   return (
     <>
       <div className="bg-primary text-center row justify-content-center">
-        <h1 className="bg-secondary  col-6  ">Hello WhatsAPP</h1>
-        <h1 className="text-light">PROPS</h1>
+        <h1 className="bg-secondary  col-6"> WhatsAPP</h1>
+        <h1 className="text-light">Dynamic Message Input In React</h1>
       </div>
       <div className="m-4">
         <ListDemo />
@@ -38,7 +39,7 @@ function MessageApp({desc,name,message}) {
     </>
   );
 }
-*/
+
 function ListDemo() {
   let data = "Hello World";
   let list = [];
@@ -56,6 +57,33 @@ function ListDemo() {
         (<h5>{item}</h5>
         ))}</h4>
         <p></p>
+      </div>
+    </>
+  );
+}*/
+
+function ListDemo() {
+  let [list, setList] = useState(["Pune"]);
+
+  let addItem = ()=>{
+    let inputValue = document.querySelector("#id1").value;
+
+    let newlist = [...list,inputValue];
+    setList(newlist);
+
+    document.querySelector("#id1").value = "";
+  };
+
+  return (
+    <>
+      <div className="alert alert-primary">
+        <input type="text" className="form-control mb-2 p-2" id="id1" placeholder="Message..." />
+        <button type="button" className="btn btn-dark mb-2 p-1 px-4" id="id1" onClick={addItem} >ADD-Message</button>
+        <h4>
+          {list.map((item)=>(
+            <h5>{item}</h5>
+          )) }
+        </h4>
       </div>
     </>
   );
